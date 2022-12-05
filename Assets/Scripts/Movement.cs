@@ -8,9 +8,14 @@ public class Movement : MonoBehaviour
     public GameObject Player;
     private Rigidbody2D rb;
     public float movementSpeed;
+
+    private SpriteRenderer sr;
+
     private void Start()
     {
         rb = gameObject.GetComponent<Rigidbody2D>();
+
+        sr.sortingOrder
     }
 
     void Update()
