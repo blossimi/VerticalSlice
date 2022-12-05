@@ -809,7 +809,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2e2ae8706193caa4caf6967453234895, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  autoGenerateRandom: 1
+  autoGenerateRandom: 0
   autoGenerateAdvanced: 0
   chunkPrefabs:
   - {fileID: 3551075973042950554, guid: 0e594f7dc7e4ded4b933b06c01faeb1b, type: 3}
