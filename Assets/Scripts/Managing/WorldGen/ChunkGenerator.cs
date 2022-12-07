@@ -6,20 +6,16 @@ public class ChunkGenerator : MonoBehaviour
 {
     [Header("Settings")]
     public GameObject prefab;
-    [Range(0.0f, 10.0f)] public float heightOffset = 1.5f;
+    [Range(0.0f, 10.0f)] public float heightOffset = 1f;
 
     [Header("Chunk to generate in")]
     public Chunk chunk;
     public bool generate = false;
 
-    //private variables
-    private GridController gc;
-
 
     // Start is called before the first frame update
     void Start()
     {
-        gc = GameObject.Find("GridController").GetComponent<GridController>();
     }
 
     // Update is called once per frame
@@ -31,9 +27,10 @@ public class ChunkGenerator : MonoBehaviour
         }
     }
 
-    void LoadTerrain(Chunk chunk, GameObject prefab)
+    public void LoadTerrain(Chunk chunk, GameObject prefab)
     {
         GameObject newTerrain = prefab;
+
 
         Vector3 newTerrainPos = new Vector3(chunk.gameObject.transform.position.x, chunk.gameObject.transform.position.y + heightOffset, chunk.gameObject.transform.position.z);
 
