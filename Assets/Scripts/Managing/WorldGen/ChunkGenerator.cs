@@ -30,11 +30,14 @@ public class ChunkGenerator : MonoBehaviour
     public void LoadTerrain(Chunk chunk, GameObject prefab)
     {
         GameObject newTerrain = prefab;
+        Vector3 newTerrainPos = new Vector3
+            (chunk.gameObject.transform.position.x, chunk.gameObject.transform.position.y + heightOffset, 
+            chunk.gameObject.transform.position.z);
 
-
-        Vector3 newTerrainPos = new Vector3(chunk.gameObject.transform.position.x, chunk.gameObject.transform.position.y + heightOffset, chunk.gameObject.transform.position.z);
-
-        GameObject terrain = Instantiate(newTerrain, newTerrainPos, new Quaternion(0, 0, 0, 0), chunk.gameObject.transform); //Create the new terrain, at the newTerrainPos position, with TerrainParent as its parent for organisation
-        terrain.name = "(" + chunk.x.ToString() + ", " + chunk.z.ToString() + ") " + terrain.name; //Set the name of the new terrain
+        GameObject terrain = Instantiate(newTerrain, newTerrainPos, 
+            new Quaternion(0, 0, 0, 0), chunk.gameObject.transform); 
+        //Create the new terrain, at the newTerrainPos position, with TerrainParent as its parent for organisation
+        terrain.name = "(" + chunk.x.ToString()
+            + ", " + chunk.z.ToString() + ") " + terrain.name; //Set the name of the new terrain
     }
 }
