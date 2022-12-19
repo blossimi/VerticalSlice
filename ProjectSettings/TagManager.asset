@@ -6,6 +6,7 @@ TagManager:
   tags:
   - BaseTile
   - BorderCollider
+  - LoadedTile
   layers:
   - Default
   - TransparentFX
