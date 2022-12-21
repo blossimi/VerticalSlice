@@ -11,6 +11,7 @@ public class InputManager : MonoBehaviour
     void Start()
     {
         UICanvas = GameObject.Find("Canvas");
+        
         UICanvas.SetActive(false);
     }
 
