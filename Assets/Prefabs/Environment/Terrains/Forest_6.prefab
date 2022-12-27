@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3551075973042950555}
   - component: {fileID: -5620336485919031878}
   m_Layer: 0
-  m_Name: Forest_3
+  m_Name: Forest_6
   m_TagString: LoadedTile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -46,7 +46,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9190445c3405eba4786173db44761666, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  uiTileImage: {fileID: 1093279731, guid: 67abbb4e30506624db565efd59290f35, type: 3}
+  uiTileImage: {fileID: -944029408, guid: 67abbb4e30506624db565efd59290f35, type: 3}
 --- !u!1001 &3492172562122398534
 PrefabInstance:
   m_ObjectHideFlags: 0

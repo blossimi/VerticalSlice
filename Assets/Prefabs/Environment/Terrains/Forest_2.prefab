@@ -134,7 +134,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9190445c3405eba4786173db44761666, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  uiTileImage: {fileID: 21300000, guid: f8134e73936968d4fba09f715ce86cd5, type: 3}
+  uiTileImage: {fileID: 1691405969, guid: 67abbb4e30506624db565efd59290f35, type: 3}
 --- !u!1001 &169036665209723145
 PrefabInstance:
   m_ObjectHideFlags: 0
