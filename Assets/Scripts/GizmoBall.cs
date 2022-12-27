@@ -9,7 +9,7 @@ public class GizmoBall : MonoBehaviour
 
     private void OnDrawGizmos()
     {
-        Gizmos.DrawCube(transform.position, size);
         Gizmos.color = gizmoColor;
+        Gizmos.DrawCube(transform.position, size);
     }
 }
