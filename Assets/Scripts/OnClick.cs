@@ -26,4 +26,12 @@ public class OnClick : MonoBehaviour
         ChunkGenerator cg = GameObject.Find("GameManager").GetComponent<ChunkGenerator>();
         cg.LoadTerrain(chunk, prefab);
     }
+
+    public void RenderUITileBorders()
+    {
+        foreach(GameObject UITile in GameObject.FindGameObjectsWithTag("UITile"))
+        {
+            UITile.GetComponent<UITileController>().RenderBorders();
+        }
+    }
 }
