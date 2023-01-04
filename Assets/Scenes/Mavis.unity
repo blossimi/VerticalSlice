@@ -946,7 +946,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   UI: 101
-  UICanvas: {fileID: 0}
+  UICanvas: {fileID: 1461208338}
+  InWorld: 0
+  InInventory: 0
+  MovingPiece: 0
 --- !u!1 &832397891
 GameObject:
   m_ObjectHideFlags: 0
@@ -2994,7 +2997,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   chunk: {fileID: 1582252981}
-  prefab: {fileID: 3551075973042950554, guid: ddd18f578ca1cfc43b522e3e97af79e7, type: 3}
+  prefab: {fileID: 3551075973042950554, guid: f5b741c7cbe2d6843823aee579194bdc, type: 3}
 --- !u!1 &1963913351
 GameObject:
   m_ObjectHideFlags: 0
