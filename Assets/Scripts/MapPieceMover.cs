@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.PlasticSCM.Editor.WebApi;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -30,19 +31,19 @@ public class MapPieceMover : MonoBehaviour
             MoveBorder(selectedTile);
         }*/
 
-        if (Input.GetKeyDown(InputManager.UIInputs.GetValue(InputManager.InputTypes.Up)))
+        if (Input.GetKeyDown(InputManager.UIInputs.GetValue(InputManager.InputTypes.Up)) && currentChunk != null)
         {
             MoveBorder(0, 1);
         }
-        if (Input.GetKeyDown(InputManager.UIInputs.GetValue(InputManager.InputTypes.Down)))
+        if (Input.GetKeyDown(InputManager.UIInputs.GetValue(InputManager.InputTypes.Down)) && currentChunk != null)
         {
             MoveBorder(0, -1);
         }
-        if (Input.GetKeyDown(InputManager.UIInputs.GetValue(InputManager.InputTypes.Left)))
+        if (Input.GetKeyDown(InputManager.UIInputs.GetValue(InputManager.InputTypes.Left)) && currentChunk != null)
         {
             MoveBorder(-1, 0);
         }
-        if (Input.GetKeyDown(InputManager.UIInputs.GetValue(InputManager.InputTypes.Right)))
+        if (Input.GetKeyDown(InputManager.UIInputs.GetValue(InputManager.InputTypes.Right)) && currentChunk != null)
         {
             MoveBorder(1, 0);
         }
@@ -71,21 +72,22 @@ public class MapPieceMover : MonoBehaviour
 
             if (selChunk.x == thisChunk.x + xDir && selChunk.z == thisChunk.z + zDir)
             {
-                float tileHeight = 100;
+                float tileHeight = tile.GetComponent<RectTransform>().rect.height; //Assumes that width = height
 
-                //The tile exists! The border can now move towards it
-                Vector3 targetLoc = new Vector3(transform.position.x + (tileHeight * xDir),
-                    transform.position.y + (tileHeight * zDir), transform.position.z);
-                //iTween.MoveTo(tileSelectionBorder, targetLoc, animationSpeed);
-
-                
-                //Now the map canvas needs to be moved in the opposite direction by the amount of pixels that a tile is high/wide
+                //Now the map canvas needs to be moved in the opposite direction by the amount of pixels that a tile is high/wide,
+                //and the same goes for the background
 
                 GameObject grid = transform.parent.Find("Grid").gameObject;
                 Vector3 gPos = grid.transform.position;
-                targetLoc = new Vector3(gPos.x + (-xDir * tileHeight), gPos.y + (-zDir * tileHeight), gPos.z);
-                
-                iTween.MoveTo(grid, targetLoc, animationSpeed);
+
+                GameObject bg = GameObject.Find("Background");
+                Vector3 bPos = grid.transform.position;
+
+                Vector3 gTarget = new Vector3(gPos.x + (-xDir * tileHeight), gPos.y + (-zDir * tileHeight), gPos.z);
+                Vector3 bTarget = new Vector3(bPos.x + (-xDir * tileHeight), bPos.y + (-zDir * tileHeight), bPos.z);
+
+                iTween.MoveTo(grid, gTarget, animationSpeed);
+                iTween.MoveTo(bg, bTarget, animationSpeed);
             }
         }
 
