@@ -9,12 +9,6 @@ using UnityEngine;
 using UnityEngine.Serialization;
 using UnityEngine.UI;
 
-/*public class KeyCodeSet : ScriptableObject
-{
-    public string type;
-    public KeyCode input;
-}*/
-
 public class InputManager : MonoBehaviour
 {
     public enum States
@@ -39,7 +33,9 @@ public class InputManager : MonoBehaviour
         Right,
         Forward,
         Back,
-        OpenUI
+        OpenUI,
+        NewPiece,
+        Cancel
     }
 
     [FormerlySerializedAs("UIInputs")] [Header("Input settings")] public SerializableDictionary<InputTypes, KeyCode> _UIInputs;
@@ -83,20 +79,24 @@ public class InputManager : MonoBehaviour
             {
                 //DISABLE UI
                 UICanvas.SetActive(false);
+                SetState(States.InWorld);
+                
                 //cc.SwitchCamera(CameraController.CameraTypes.PlayerCamera);
             }
             else if (!UICanvas.activeInHierarchy) //If UI is OFF:
             {
                 //ENABLE UI
                 UICanvas.SetActive(true);
+                SetState(States.InInventory);
+                
                 //cc.SwitchCamera(CameraController.CameraTypes.UICamera);
             }
         }
 
-        GetInputState();
+        //GetInputState();
     }
 
-    void GetInputState()
+    /*void GetInputState()
     {
         if (UICanvas.activeInHierarchy == true && mpm.selectedPiece == null)
         {
@@ -106,21 +106,21 @@ public class InputManager : MonoBehaviour
             SetState(States.InInventory);
             
         }
-        if (UICanvas.activeInHierarchy == true && mpm.selectedPiece != null)
+        /*if (UICanvas.activeInHierarchy == true && mpm.selectedPiece != null)
         {
             //Canvas is active AND there is a piece selected, options:
             // - MovingPiece
 
             SetState(States.MovingPiece);
-        }
+        }#1#
 
         if (UICanvas.activeInHierarchy == false)
         {
             SetState(States.InWorld);
         }
-    }
+    }*/
 
-    void SetState(States stateToSet)
+    public void SetState(States stateToSet)
     {
         var keys = new List<States>(InputState.Keys);
         

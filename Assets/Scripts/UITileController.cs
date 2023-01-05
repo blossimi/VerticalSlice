@@ -7,18 +7,24 @@ public class UITileController : MonoBehaviour
 {
     [Tooltip("The in-world chunk that the tile is bound to")] public Chunk inWorldChunk; //The in-world chunk that the tile is bound to
     //public GameObject UITilePrefab; //The prefab (including the image) for the current used tile
+    
     public Chunk thisChunk; //The chunk script attached to this UI tile
     public GameObject[] chunksInWorld;
 
     //Borders
     [Header("Borders")]
+    
     public GameObject top;
     public GameObject bottom;
     public GameObject left;
     public GameObject right;
+    
     [Space]
+    
     public bool existAbove = false;
+    
     [Space]
+    
     public Sprite defaultSprite;
     public GameObject[] uiTiles;
 

@@ -3,22 +3,39 @@ using System.Collections.Generic;
 using Unity.PlasticSCM.Editor.WebApi;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class MapPieceMover : MonoBehaviour
 {
+    [Header("Information")]
+    
     public GameObject selectedPiece;
     public GameObject selectedTile;
+    public Chunk currentChunk;
     public GameObject[] uiTiles;
 
-    [Header("Settings")] public GameObject tileSelectionBorder;
-    [Range(0.0f, 1.0f)] public float animationSpeed = 0.1f;
+    [Header("Settings")]
+    
+    public GameObject tileSelectionBorder;
+    [Range(0.0f, 1.0f)] public float borderAnimationSpeed = 0.1f;
+    [Range(0.0f, 2.0f)] public float pieceAnimationSpeed = 0.5f;
+    
+    //Private variables
+    private InputManager im;
+    private HotbarController hc;
 
-    public Chunk currentChunk;
+    private Vector3 oldFirstPiecePos;
     
     // Start is called before the first frame update
     void Start()
     {
+
+        im = GameObject.Find("GameManager").GetComponent<InputManager>();
+        hc = GameObject.Find("Bar").GetComponent<HotbarController>();
+        
         uiTiles = GameObject.FindGameObjectsWithTag("UITile");
+        
+        
     }
 
     // Update is called once per frame
@@ -26,27 +43,69 @@ public class MapPieceMover : MonoBehaviour
     {
         currentChunk = GetCurrentChunk();
         
-        /*if (Input.GetKeyDown(KeyCode.Space))
-        {
-            MoveBorder(selectedTile);
-        }*/
-
+        //
+        //Map movement inputs
+        //
+        
         if (Input.GetKeyDown(InputManager.UIInputs.GetValue(InputManager.InputTypes.Up)) && currentChunk != null)
-        {
+        { //Up
             MoveBorder(0, 1);
         }
         if (Input.GetKeyDown(InputManager.UIInputs.GetValue(InputManager.InputTypes.Down)) && currentChunk != null)
-        {
+        { //Down
             MoveBorder(0, -1);
         }
         if (Input.GetKeyDown(InputManager.UIInputs.GetValue(InputManager.InputTypes.Left)) && currentChunk != null)
-        {
+        { //Left
             MoveBorder(-1, 0);
         }
         if (Input.GetKeyDown(InputManager.UIInputs.GetValue(InputManager.InputTypes.Right)) && currentChunk != null)
-        {
+        { //Right
             MoveBorder(1, 0);
         }
+
+        //
+        //Map control inputs
+        //
+        
+        //If the current input state is MovingPiece and NewPiece input is pressed
+        if (im.currentState == InputManager.States.MovingPiece && Input.GetKeyDown(InputManager.UIInputs.GetValue(InputManager.InputTypes.Cancel)))
+        { //CANCEL NewPiece
+            
+            //Move piece in hotbar to OLD position
+            Vector3 target = oldFirstPiecePos;
+            iTween.MoveTo(selectedPiece, target, pieceAnimationSpeed);
+
+            im.SetState(InputManager.States.InInventory);
+            
+            //Debug.Log("Esc pressed, state is now " + im.currentState.ToString());
+            
+        }
+        
+        //If the current input state is InInventory and NewPiece input is pressed
+        if (im.currentState == InputManager.States.InInventory && Input.GetKeyDown(InputManager.UIInputs.GetValue(InputManager.InputTypes.NewPiece)))
+        { //New Piece
+            
+            
+            //Select first piece in hotbar
+            selectedPiece = hc.firstPiece;
+
+            oldFirstPiecePos = selectedPiece.transform.position;
+            
+            //Set input state to MovingPiece
+            im.SetState(InputManager.States.MovingPiece);
+            
+            //Debug.Log("W pressed, state is now " + im.currentState.ToString());
+
+            //Move piece in hotbar to THIS position
+            Vector3 target = transform.position;
+            iTween.MoveTo(selectedPiece, target, pieceAnimationSpeed);
+
+            //
+
+        }
+        
+        
     }
 
     private Chunk GetCurrentChunk()
@@ -86,8 +145,8 @@ public class MapPieceMover : MonoBehaviour
                 Vector3 gTarget = new Vector3(gPos.x + (-xDir * tileHeight), gPos.y + (-zDir * tileHeight), gPos.z);
                 Vector3 bTarget = new Vector3(bPos.x + (-xDir * tileHeight), bPos.y + (-zDir * tileHeight), bPos.z);
 
-                iTween.MoveTo(grid, gTarget, animationSpeed);
-                iTween.MoveTo(bg, bTarget, animationSpeed);
+                iTween.MoveTo(grid, gTarget, borderAnimationSpeed);
+                iTween.MoveTo(bg, bTarget, borderAnimationSpeed);
             }
         }
 
