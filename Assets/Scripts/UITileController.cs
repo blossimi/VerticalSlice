@@ -53,14 +53,14 @@ public class UITileController : MonoBehaviour
     {
         //chunksInWorld.AddRange(GameObject.FindGameObjectsWithTag("BaseTile"));
         
-        inWorldChunk = SynchroniseChunk();
+        inWorldChunk = SynchroniseChunk(thisChunk);
 
         LoadUIImage();
 
         RenderBorders();
     }
 
-    Chunk SynchroniseChunk()
+    public Chunk SynchroniseChunk(Chunk thisChunk)
     {
 
         foreach(GameObject chunkObj in chunksInWorld) //For every base chunk in the world;

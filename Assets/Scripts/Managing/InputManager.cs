@@ -35,7 +35,8 @@ public class InputManager : MonoBehaviour
         Back,
         OpenUI,
         NewPiece,
-        Cancel
+        Cancel,
+        Confirm
     }
 
     [FormerlySerializedAs("UIInputs")] [Header("Input settings")] public SerializableDictionary<InputTypes, KeyCode> _UIInputs;

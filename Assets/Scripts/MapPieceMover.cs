@@ -12,6 +12,7 @@ public class MapPieceMover : MonoBehaviour
     public GameObject selectedPiece;
     public GameObject selectedTile;
     public Chunk currentChunk;
+    public Chunk currentRealWorldChunk;
     public GameObject[] uiTiles;
 
     [Header("Settings")]
@@ -23,6 +24,7 @@ public class MapPieceMover : MonoBehaviour
     //Private variables
     private InputManager im;
     private HotbarController hc;
+    private ChunkGenerator cg;
 
     private Vector3 oldFirstPiecePos;
     
@@ -34,6 +36,7 @@ public class MapPieceMover : MonoBehaviour
         hc = GameObject.Find("Bar").GetComponent<HotbarController>();
         
         uiTiles = GameObject.FindGameObjectsWithTag("UITile");
+        cg = GameObject.Find("GameManager").GetComponent<ChunkGenerator>();
         
         
     }
@@ -42,6 +45,10 @@ public class MapPieceMover : MonoBehaviour
     void Update()
     {
         currentChunk = GetCurrentChunk();
+        if (currentChunk != null)
+        {
+            currentRealWorldChunk = currentChunk.gameObject.GetComponent<UITileController>().inWorldChunk;
+        }
         
         //
         //Map movement inputs
@@ -69,6 +76,7 @@ public class MapPieceMover : MonoBehaviour
         //
         
         //If the current input state is MovingPiece and NewPiece input is pressed
+        
         if (im.currentState == InputManager.States.MovingPiece && Input.GetKeyDown(InputManager.UIInputs.GetValue(InputManager.InputTypes.Cancel)))
         { //CANCEL NewPiece
             
@@ -101,10 +109,22 @@ public class MapPieceMover : MonoBehaviour
             Vector3 target = transform.position;
             iTween.MoveTo(selectedPiece, target, pieceAnimationSpeed);
 
-            //
-
         }
         
+        //If the current input is MovingPiece and Conform input is pressed
+        if (im.currentState == InputManager.States.MovingPiece && Input.GetKeyDown(InputManager.UIInputs.GetValue(InputManager.InputTypes.Confirm)))
+        {
+            Debug.Log("Space pressed");
+            
+            //Generate the terrain
+            GameObject terrainPrefab = selectedPiece.GetComponent<Piece>().terrainPrefab;
+            
+            
+            cg.LoadTerrain(currentRealWorldChunk, terrainPrefab);
+
+            //Destroy the piece
+            Destroy(selectedPiece);
+        }
         
     }
 
