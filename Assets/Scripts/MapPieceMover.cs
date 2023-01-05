@@ -4,6 +4,7 @@ using Unity.PlasticSCM.Editor.WebApi;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Serialization;
+using UnityEngine.UI;
 
 public class MapPieceMover : MonoBehaviour
 {
@@ -20,6 +21,9 @@ public class MapPieceMover : MonoBehaviour
     public GameObject tileSelectionBorder;
     [Range(0.0f, 1.0f)] public float borderAnimationSpeed = 0.1f;
     [Range(0.0f, 2.0f)] public float pieceAnimationSpeed = 0.5f;
+    public Sprite borderFull;
+    public Sprite borderCorners;
+    public GameObject grid;
     
     //Private variables
     private InputManager im;
@@ -44,10 +48,30 @@ public class MapPieceMover : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        
+        //
+        //Set variables
+        //
+        
         currentChunk = GetCurrentChunk();
         if (currentChunk != null)
         {
             currentRealWorldChunk = currentChunk.gameObject.GetComponent<UITileController>().inWorldChunk;
+        }
+        
+        //
+        //Set texture
+        //
+
+        //If the current state is MovingPiece
+        if (im.currentState == InputManager.States.MovingPiece)
+        {
+            //Change the texture to borderCorners shape
+            gameObject.GetComponent<Image>().sprite = borderCorners;
+        }
+        else //Else, set the sprite to borderFull
+        {
+            gameObject.GetComponent<Image>().sprite = borderFull;
         }
         
         //
@@ -124,6 +148,9 @@ public class MapPieceMover : MonoBehaviour
 
             //Destroy the piece
             Destroy(selectedPiece);
+            
+            //Set state to InInventory again
+            im.SetState(InputManager.States.InInventory);
         }
         
     }
@@ -156,7 +183,6 @@ public class MapPieceMover : MonoBehaviour
                 //Now the map canvas needs to be moved in the opposite direction by the amount of pixels that a tile is high/wide,
                 //and the same goes for the background
 
-                GameObject grid = transform.parent.Find("Grid").gameObject;
                 Vector3 gPos = grid.transform.position;
 
                 GameObject bg = GameObject.Find("Background");
