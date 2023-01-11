@@ -25,7 +25,7 @@ public class InputManager : MonoBehaviour
         Left,
         Right
     }
-    public enum InputTypes
+    /*public enum InputTypes
     {
         Up,
         Down,
@@ -37,10 +37,10 @@ public class InputManager : MonoBehaviour
         NewPiece,
         Cancel,
         Confirm
-    }
+    }*/
 
-    [FormerlySerializedAs("UIInputs")] [Header("Input settings")] public SerializableDictionary<InputTypes, KeyCode> _UIInputs;
-    public static SerializableDictionary<InputTypes, KeyCode> UIInputs;
+    /*[FormerlySerializedAs("UIInputs")] [Header("Input settings")] public SerializableDictionary<InputTypes, KeyCode> _UIInputs;
+    public static SerializableDictionary<InputTypes, KeyCode> UIInputs;*/
 
     [Header("Settings")]
     [SerializeField] private GameObject UICanvas;
@@ -62,7 +62,7 @@ public class InputManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        UIInputs = _UIInputs;
+        /*UIInputs = _UIInputs;*/
         
         UICanvas = GameObject.Find("Canvas");
         mpm = GameObject.Find("SelectionBorder").GetComponent<MapPieceMover>();
@@ -74,7 +74,7 @@ public class InputManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(UIInputs.GetValue(InputTypes.OpenUI)))
+        if (Input.GetButtonDown("Inventory"))
         {
             if (UICanvas.activeInHierarchy) //If UI is ON:
             {

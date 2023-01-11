@@ -54,52 +54,56 @@ public class Piece : MonoBehaviour
 
         foreach(GameObject tile in uiTiles)
         {
-
             Chunk c = tile.GetComponent<Chunk>();
+
+            if(c != null && currentUIChunk != null)
+            {
+                //Check for above
+                if (c.x == currentUIChunk.x && c.z == currentUIChunk.z + 1)
+                {
+                    if (c.GetComponent<Image>().sprite != tile.GetComponent<UITileController>().defaultSprite)
+                    {
+                        //Rendered tile exists above; don't render top border!
+                        RenderInOut(top, false);
+
+                    }
+                }
+
+                //Check for below
+                if (c.x == currentUIChunk.x && c.z == currentUIChunk.z - 1)
+                {
+                    if (c.GetComponent<Image>().sprite != tile.GetComponent<UITileController>().defaultSprite)
+                    {
+                        //Rendered tile exists below; don't render below border!
+                        RenderInOut(bottom, false);
+
+                    }
+                }
+
+                //Check for left
+                if (c.x == currentUIChunk.x - 1 && c.z == currentUIChunk.z)
+                {
+                    if (c.GetComponent<Image>().sprite != tile.GetComponent<UITileController>().defaultSprite)
+                    {
+                        //Rendered tile exists left; don't render left border!
+                        RenderInOut(left, false);
+
+                    }
+                }
+
+                //Check for right
+                if (c.x == currentUIChunk.x + 1 && c.z == currentUIChunk.z)
+                {
+                    if (c.GetComponent<Image>().sprite != tile.GetComponent<UITileController>().defaultSprite)
+                    {
+                        //Rendered tile exists right; don't render right border!
+                        RenderInOut(right, false);
+
+                    }
+                }
+            }
             
-            //Check for above
-            if(c.x == currentUIChunk.x && c.z == currentUIChunk.z + 1)
-            {
-                if(c.GetComponent<Image>().sprite != tile.GetComponent<UITileController>().defaultSprite)
-                {
-                    //Rendered tile exists above; don't render top border!
-                    RenderInOut(top, false);
-
-                }
-            }
-
-            //Check for below
-            if (c.x == currentUIChunk.x && c.z == currentUIChunk.z - 1)
-            {
-                if (c.GetComponent<Image>().sprite != tile.GetComponent<UITileController>().defaultSprite)
-                {
-                    //Rendered tile exists below; don't render below border!
-                    RenderInOut(bottom, false);
-
-                }
-            }
-
-            //Check for left
-            if (c.x == currentUIChunk.x - 1 && c.z == currentUIChunk.z)
-            {
-                if (c.GetComponent<Image>().sprite != tile.GetComponent<UITileController>().defaultSprite)
-                {
-                    //Rendered tile exists left; don't render left border!
-                    RenderInOut(left, false);
-
-                }
-            }
-
-            //Check for right
-            if (c.x == currentUIChunk.x + 1 && c.z == currentUIChunk.z)
-            {
-                if (c.GetComponent<Image>().sprite != tile.GetComponent<UITileController>().defaultSprite)
-                {
-                    //Rendered tile exists right; don't render right border!
-                    RenderInOut(right, false);
-
-                }
-            }
+            
 
         }
         
