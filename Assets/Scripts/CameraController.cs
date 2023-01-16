@@ -16,34 +16,48 @@ public class CameraController : MonoBehaviour
     public float speed = 1f;
     public float offsetOne = 2f;
     public float offsetTwo = 1f;
-
-    [Header("Info")]
-    public bool zoomedIn = true;
-    public bool zoomedOut = false;
+    
+    //Private variables
+    private InputManager im;
 
     private void Start()
     {
         
+        im = GameObject.Find("GameManager").GetComponent<InputManager>();
     }
 
     private void Update()
     {
+        //If camera is in outPos, set State to inInventory
+        if (transform.position == outPos)
+        {
+            im.SetState(InputManager.States.InInventory);
+        }
+        else if (transform.position == inPos)
+        {
+            im.SetState((InputManager.States.InWorld));
+        }
+        
+
 
         if (Input.GetKeyDown(KeyCode.F))
         {
             ZoomOut();
         }
-        if (Input.GetKeyDown(KeyCode.G) && zoomedOut)
+        if (Input.GetKeyDown(KeyCode.G))
         {
             ZoomIn();
         }
     }
 
-    public void ZoomOut()
+    public IEnumerator ZoomOut()
     {
+        
+        //Determine position to return to when zooming in again
         inPos = transform.position;
-
-        zoomOutPath[0] = transform.position;
+        
+        //Set path to zoom out along
+        zoomOutPath[0] = inPos;
 
         zoomOutPath[1] = Vector3.Lerp(zoomOutPath[0], outPos, 0.33f);
         zoomOutPath[1] = new Vector3(zoomOutPath[1].x, zoomOutPath[1].y - offsetOne, zoomOutPath[1].z);
@@ -52,15 +66,30 @@ public class CameraController : MonoBehaviour
         zoomOutPath[2] = new Vector3(zoomOutPath[2].x, zoomOutPath[2].y - offsetTwo, zoomOutPath[2].z);
 
         zoomOutPath[3] = outPos;
+        
+        //MoveTo
+        iTween.MoveTo(gameObject, iTween.Hash("position", zoomOutPath[3], "time", speed, "path", zoomOutPath, "easetype", iTween.EaseType.linear));
 
-        iTween.MoveTo(gameObject, iTween.Hash("position", zoomOutPath[3], "time", speed, "path", zoomOutPath, "easetype", iTween.EaseType.easeInOutSine));
-        Debug.Log("Test?");
-        iTween.RotateTo(gameObject, iTween.Hash("rotation", new Vector3(90f, 0f, 0f), "time", speed, "easetype", iTween.EaseType.easeInOutSine));
+        //RotateTo
+        iTween.RotateTo(gameObject, iTween.Hash("rotation", new Vector3(90f, 0f, 0f), "time", speed, "easetype", iTween.EaseType.linear));
+        
+        //Wait for MoveTo & RotateTo to finish
+        while (im.currentState != InputManager.States.InInventory) //While the state is not inInventory,
+        {
+            //Wait
+            yield return null;
+        }
+        
+        //Enable UI
+        im.UICanvas.SetActive(true);
+
+        yield return null;
     }
 
-    public void ZoomIn()
+    public IEnumerator ZoomIn()
     {
 
+        //Set path to zoom out along
         zoomInPath[0] = outPos;
 
         zoomInPath[1] = Vector3.Lerp(zoomInPath[0], inPos, 0.33f);
@@ -70,9 +99,26 @@ public class CameraController : MonoBehaviour
         zoomInPath[2] = new Vector3(zoomInPath[2].x, zoomInPath[2].y - offsetTwo, zoomInPath[2].z);
 
         zoomInPath[3] = inPos;
+        
+        //Disable UI
+        im.UICanvas.SetActive(false);
 
-        iTween.MoveTo(gameObject, iTween.Hash("position", zoomInPath[3], "time", speed, "path", zoomInPath, "easetype", iTween.EaseType.easeInOutSine));
-        iTween.RotateTo(gameObject, iTween.Hash("rotation", new Vector3(60f, 0f, 0f), "time", speed, "easetype", iTween.EaseType.easeInOutSine));
+        //MoveTo
+        iTween.MoveTo(gameObject, iTween.Hash("position", zoomInPath[3], "time", speed, "path", zoomInPath, "easetype", iTween.EaseType.linear));
+
+        //RotateTo
+        iTween.RotateTo(gameObject, iTween.Hash("rotation", new Vector3(60f, 0f, 0f), "time", speed, "easetype", iTween.EaseType.linear));
+        
+        /*//Wait for MoveTo & RotateTo to finish
+        while (im.currentState != InputManager.States.InWorld) //While the state is not inWorld,
+        {
+            //Wait
+            yield return null;
+        }*/
+        
+        
+
+        yield return null;
     }
 
     private void OnDrawGizmosSelected()

@@ -43,7 +43,7 @@ public class InputManager : MonoBehaviour
     public static SerializableDictionary<InputTypes, KeyCode> UIInputs;*/
 
     [Header("Settings")]
-    [SerializeField] private GameObject UICanvas;
+    public GameObject UICanvas;
     [SerializeField] private MapPieceMover mpm;
     [SerializeField] private CameraController cc;
     public States currentState;
@@ -79,45 +79,25 @@ public class InputManager : MonoBehaviour
             if (UICanvas.activeInHierarchy) //If UI is ON:
             {
                 //DISABLE UI
-                StartCoroutine(DisableUI());
                 
+                Debug.Log("Starting zoom-in coroutine:");
+
+                StartCoroutine(cc.ZoomIn());
+
             }
             else if (!UICanvas.activeInHierarchy) //If UI is OFF:
             {
                 //ENABLE UI
-                UICanvas.SetActive(true);
-                SetState(States.InInventory);
-                cc.ZoomOut();
                 
-                //cc.SwitchCamera(CameraController.CameraTypes.UICamera);
+                Debug.Log("Starting zoom-out coroutine:");
+                
+                StartCoroutine(cc.ZoomOut());
             }
         }
 
         //GetInputState();
     }
 
-    IEnumerator DisableUI()
-    {
-        
-        
-        cc.ZoomIn();
-
-        UICanvas.SetActive(false);
-        SetState(States.InWorld);
-
-        yield return null;
-    }
-
-    IEnumerator EnableUI()
-    {
-
-
-
-        UICanvas.SetActive(true);
-        SetState(States.InInventory);
-
-        yield return null;
-    }
 
     /*void GetInputState()
     {
