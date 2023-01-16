@@ -44,6 +44,9 @@ public class InputManager : MonoBehaviour
 
     [Header("Settings")]
     public GameObject UICanvas;
+    [Range(0.0f, 2.0f)] public float canvasFadeTime;
+    [Range(0.0f, 0.1f)] public float canvasFadeAmount;
+    [Range(0.0f, 0.5f)] public float canvasFadeDelay;
     [SerializeField] private MapPieceMover mpm;
     [SerializeField] private CameraController cc;
     public States currentState;
@@ -69,6 +72,8 @@ public class InputManager : MonoBehaviour
         cc = GameObject.Find("Camera").GetComponent<CameraController>();
         
         UICanvas.SetActive(false);
+
+        canvasFadeTime = (cc.speed) - canvasFadeDelay;
     }
 
     // Update is called once per frame
@@ -98,6 +103,30 @@ public class InputManager : MonoBehaviour
         //GetInputState();
     }
 
+    public IEnumerator FadeUIInOut(bool transparent)
+    {
+        CanvasGroup cg = UICanvas.GetComponent<CanvasGroup>();
+
+        yield return new WaitForSeconds(canvasFadeDelay);
+
+        if (transparent) //Fade to transparent
+        {
+            
+        }
+        else if(!transparent) //Fade to visible
+        {
+            UICanvas.SetActive(true);
+            cg.alpha = 0.0f;
+
+            while (cg.alpha != 1.0f)
+            {
+                cg.alpha = cg.alpha + canvasFadeAmount;
+                yield return new WaitForSeconds(canvasFadeTime / (1 / canvasFadeAmount));
+            }
+        }
+        
+        yield return null;
+    }
 
     /*void GetInputState()
     {

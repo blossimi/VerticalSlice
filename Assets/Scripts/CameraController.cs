@@ -19,39 +19,32 @@ public class CameraController : MonoBehaviour
     
     //Private variables
     private InputManager im;
+    private Movement playerMovement;
 
     private void Start()
     {
         
         im = GameObject.Find("GameManager").GetComponent<InputManager>();
+        playerMovement = transform.parent.gameObject.GetComponent<Movement>();
     }
 
     private void Update()
     {
-        //If camera is in outPos, set State to inInventory
-        if (transform.position == outPos)
-        {
-            im.SetState(InputManager.States.InInventory);
-        }
-        else if (transform.position == inPos)
-        {
-            im.SetState((InputManager.States.InWorld));
-        }
-        
-
 
         if (Input.GetKeyDown(KeyCode.F))
         {
-            ZoomOut();
+            //im.UICanvas.GetComponent<CanvasGroup>().alpha = 0.5f;
         }
         if (Input.GetKeyDown(KeyCode.G))
         {
-            ZoomIn();
+            //ZoomIn();
         }
     }
 
     public IEnumerator ZoomOut()
     {
+        //Lock player movement
+        playerMovement.movementLocked = true;
         
         //Determine position to return to when zooming in again
         inPos = transform.position;
@@ -67,6 +60,9 @@ public class CameraController : MonoBehaviour
 
         zoomOutPath[3] = outPos;
         
+        //Start fading UI
+        StartCoroutine(im.FadeUIInOut(false)); //Fade UI from 0.0f to 1.0f alpha
+        
         //MoveTo
         iTween.MoveTo(gameObject, iTween.Hash("position", zoomOutPath[3], "time", speed, "path", zoomOutPath, "easetype", iTween.EaseType.linear));
 
@@ -74,15 +70,17 @@ public class CameraController : MonoBehaviour
         iTween.RotateTo(gameObject, iTween.Hash("rotation", new Vector3(90f, 0f, 0f), "time", speed, "easetype", iTween.EaseType.linear));
         
         //Wait for MoveTo & RotateTo to finish
-        while (im.currentState != InputManager.States.InInventory) //While the state is not inInventory,
+        while (Vector3.Distance(new Vector3(0, transform.position.y, 0), new Vector3(0, outPos.y, 0)) < 2) //While the camera is not yet zoomed out
         {
             //Wait
             yield return null;
         }
         
-        //Enable UI
-        im.UICanvas.SetActive(true);
-
+        //Set correct state
+        im.SetState(InputManager.States.InInventory);
+        
+        
+        
         yield return null;
     }
 
@@ -109,15 +107,19 @@ public class CameraController : MonoBehaviour
         //RotateTo
         iTween.RotateTo(gameObject, iTween.Hash("rotation", new Vector3(60f, 0f, 0f), "time", speed, "easetype", iTween.EaseType.linear));
         
-        /*//Wait for MoveTo & RotateTo to finish
-        while (im.currentState != InputManager.States.InWorld) //While the state is not inWorld,
+        //Wait for MoveTo & RotateTo to finish
+        while (Vector3.Distance(new Vector3(0, transform.position.y, 0), new Vector3(0, inPos.y, 0)) < 2) //While the camera is not yet zoomed out
         {
             //Wait
             yield return null;
-        }*/
+        }
         
+        //Set correct state
+        im.SetState(InputManager.States.InWorld);
         
-
+        //Unlock playerMovement
+        playerMovement.movementLocked = false;
+        
         yield return null;
     }
 
