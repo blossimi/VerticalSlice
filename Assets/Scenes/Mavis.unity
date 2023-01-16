@@ -1017,7 +1017,6 @@ GameObject:
   - component: {fileID: 764092240}
   - component: {fileID: 764092241}
   - component: {fileID: 764092242}
-  - component: {fileID: 764092243}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -1068,47 +1067,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9bb5f4cb4d9548a4abdb3a695e5251d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _UIInputs:
-    _keys:
-    - _key: 6
-      _value: 101
-    - _key: 0
-      _value: 273
-    - _key: 1
-      _value: 274
-    - _key: 2
-      _value: 276
-    - _key: 3
-      _value: 275
-    - _key: 7
-      _value: 119
-    - _key: 8
-      _value: 27
-    - _key: 9
-      _value: 32
   UICanvas: {fileID: 1461208338}
   mpm: {fileID: 2038235103}
-  cc: {fileID: 764092243}
+  cc: {fileID: 0}
   currentState: 1
---- !u!114 &764092243
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 764092239}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c207dcbf4c3ad184497aedd629e9a276, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  currentCamera: {fileID: 0}
-  cameras:
-    _keys:
-    - _key: 0
-      _value: {fileID: 1194263265}
-    - _key: 1
-      _value: {fileID: 0}
 --- !u!1001 &771411469
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1601,6 +1563,33 @@ Camera:
   m_CorrespondingSourceObject: {fileID: 528070782144846522, guid: 6d33ccd4a32272e4c9ed953b5188525b, type: 3}
   m_PrefabInstance: {fileID: 235511280}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1194263271
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1194263265}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c207dcbf4c3ad184497aedd629e9a276, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  zoomOutPath:
+  - {x: 0, y: 0, z: 0}
+  - {x: 0, y: 0, z: 0}
+  - {x: 0, y: 0, z: 0}
+  - {x: 0, y: 0, z: 0}
+  zoomInPath:
+  - {x: 0, y: 0, z: 0}
+  - {x: 0, y: 0, z: 0}
+  - {x: 0, y: 0, z: 0}
+  - {x: 0, y: 0, z: 0}
+  inPos: {x: 0, y: 0, z: 0}
+  outPos: {x: 0, y: 30, z: 0}
+  speed: 0.5
+  offsetOne: 0
+  offsetTwo: 0
 --- !u!1 &1202849180
 GameObject:
   m_ObjectHideFlags: 0

@@ -66,7 +66,7 @@ public class InputManager : MonoBehaviour
         
         UICanvas = GameObject.Find("Canvas");
         mpm = GameObject.Find("SelectionBorder").GetComponent<MapPieceMover>();
-        cc = GameObject.Find("GameManager").GetComponent<CameraController>();
+        cc = GameObject.Find("Camera").GetComponent<CameraController>();
         
         UICanvas.SetActive(false);
     }
@@ -79,22 +79,44 @@ public class InputManager : MonoBehaviour
             if (UICanvas.activeInHierarchy) //If UI is ON:
             {
                 //DISABLE UI
-                UICanvas.SetActive(false);
-                SetState(States.InWorld);
+                StartCoroutine(DisableUI());
                 
-                //cc.SwitchCamera(CameraController.CameraTypes.PlayerCamera);
             }
             else if (!UICanvas.activeInHierarchy) //If UI is OFF:
             {
                 //ENABLE UI
                 UICanvas.SetActive(true);
                 SetState(States.InInventory);
+                cc.ZoomOut();
                 
                 //cc.SwitchCamera(CameraController.CameraTypes.UICamera);
             }
         }
 
         //GetInputState();
+    }
+
+    IEnumerator DisableUI()
+    {
+        
+        
+        cc.ZoomIn();
+
+        UICanvas.SetActive(false);
+        SetState(States.InWorld);
+
+        yield return null;
+    }
+
+    IEnumerator EnableUI()
+    {
+
+
+
+        UICanvas.SetActive(true);
+        SetState(States.InInventory);
+
+        yield return null;
     }
 
     /*void GetInputState()
