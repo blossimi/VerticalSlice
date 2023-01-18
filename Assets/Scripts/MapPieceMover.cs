@@ -151,6 +151,8 @@ public class MapPieceMover : MonoBehaviour
             
             //Set state to InInventory again
             im.SetState(InputManager.States.InInventory);
+            
+            
         }
         
     }
