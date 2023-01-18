@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 85f7ef2aa3392b847b5a0a97fd323da6
+guid: 44150318ade17ed46b6e4e67749cbc5a
 ScriptedImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -47,6 +47,7 @@ ScriptedImporter:
     flipbookRows: 0
     flipbookColumns: 0
     ignorePngGamma: 0
+    cookieMode: 0
     filterMode: 1
     aniso: 1
     mipBias: 0
@@ -89,6 +90,7 @@ ScriptedImporter:
     tessellationDetail: 0
     parentGroupIndex: -1
     uvTransform: {x: 0, y: 0}
+    spritePosition: {x: 0, y: 0}
   mosaicSpriteImportData: []
   rigSpriteImportData:
   - name: body
@@ -857,7 +859,8 @@ ScriptedImporter:
     - {x: 53, y: 60}
     tessellationDetail: 0
     parentGroupIndex: -1
-    uvTransform: {x: -303, y: -133}
+    uvTransform: {x: 4, y: 4}
+    spritePosition: {x: 307, y: 137}
   - name: right leg
     originalName: 
     pivot: {x: 0.5, y: 0.5}
@@ -1465,7 +1468,8 @@ ScriptedImporter:
     - {x: 0, y: 28}
     tessellationDetail: 0
     parentGroupIndex: -1
-    uvTransform: {x: 287, y: -59}
+    uvTransform: {x: 866, y: 4}
+    spritePosition: {x: 579, y: 63}
   - name: left leg
     originalName: 
     pivot: {x: 0.5, y: 0.5}
@@ -2062,7 +2066,8 @@ ScriptedImporter:
     - {x: 0, y: 27}
     tessellationDetail: 0
     parentGroupIndex: -1
-    uvTransform: {x: 228, y: 476}
+    uvTransform: {x: 563, y: 534}
+    spritePosition: {x: 335, y: 58}
   - name: right arm
     originalName: 
     pivot: {x: 0.5, y: 0.5}
@@ -3032,7 +3037,8 @@ ScriptedImporter:
     - {x: 88, y: 7}
     tessellationDetail: 0
     parentGroupIndex: -1
-    uvTransform: {x: -16, y: -4}
+    uvTransform: {x: 563, y: 364}
+    spritePosition: {x: 579, y: 368}
   - name: left arm
     originalName: 
     pivot: {x: 0.5, y: 0.5}
@@ -4014,7 +4020,8 @@ ScriptedImporter:
     - {x: 9, y: 88}
     tessellationDetail: 0
     parentGroupIndex: -1
-    uvTransform: {x: 344, y: -438}
+    uvTransform: {x: 563, y: 4}
+    spritePosition: {x: 219, y: 442}
   characterData:
     bones:
     - name: body root
@@ -4243,7 +4250,7 @@ ScriptedImporter:
     spriteName: 
     isGroup: 0
     parentIndex: -1
-    spriteID: 00000000000000000000000000000000
+    spriteID: 68a432c6591f7a34d8a212e1c40f5b00
     layerID: 1
     mosaicPosition: {x: 0, y: 0}
     flatten: 0
