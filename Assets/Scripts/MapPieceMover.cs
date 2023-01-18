@@ -78,19 +78,19 @@ public class MapPieceMover : MonoBehaviour
         //Map movement inputs
         //
         
-        if (Input.GetKeyDown(InputManager.UIInputs.GetValue(InputManager.InputTypes.Up)) && currentChunk != null)
+        if (Input.GetKeyDown(KeyCode.UpArrow) && currentChunk != null)
         { //Up
             MoveBorder(0, 1);
         }
-        if (Input.GetKeyDown(InputManager.UIInputs.GetValue(InputManager.InputTypes.Down)) && currentChunk != null)
+        if (Input.GetKeyDown(KeyCode.DownArrow) && currentChunk != null)
         { //Down
             MoveBorder(0, -1);
         }
-        if (Input.GetKeyDown(InputManager.UIInputs.GetValue(InputManager.InputTypes.Left)) && currentChunk != null)
+        if (Input.GetKeyDown(KeyCode.LeftArrow) && currentChunk != null)
         { //Left
             MoveBorder(-1, 0);
         }
-        if (Input.GetKeyDown(InputManager.UIInputs.GetValue(InputManager.InputTypes.Right)) && currentChunk != null)
+        if (Input.GetKeyDown(KeyCode.RightArrow) && currentChunk != null)
         { //Right
             MoveBorder(1, 0);
         }
@@ -101,7 +101,7 @@ public class MapPieceMover : MonoBehaviour
         
         //If the current input state is MovingPiece and NewPiece input is pressed
         
-        if (im.currentState == InputManager.States.MovingPiece && Input.GetKeyDown(InputManager.UIInputs.GetValue(InputManager.InputTypes.Cancel)))
+        if (im.currentState == InputManager.States.MovingPiece && Input.GetButtonDown("Cancel"))
         { //CANCEL NewPiece
             
             //Move piece in hotbar to OLD position
@@ -115,7 +115,7 @@ public class MapPieceMover : MonoBehaviour
         }
         
         //If the current input state is InInventory and NewPiece input is pressed
-        if (im.currentState == InputManager.States.InInventory && Input.GetKeyDown(InputManager.UIInputs.GetValue(InputManager.InputTypes.NewPiece)))
+        if (im.currentState == InputManager.States.InInventory && Input.GetButtonDown("NewPiece"))
         { //New Piece
             
             
@@ -135,8 +135,8 @@ public class MapPieceMover : MonoBehaviour
 
         }
         
-        //If the current input is MovingPiece and Conform input is pressed
-        if (im.currentState == InputManager.States.MovingPiece && Input.GetKeyDown(InputManager.UIInputs.GetValue(InputManager.InputTypes.Confirm)))
+        //If the current input is MovingPiece and Confirm input is pressed
+        if (im.currentState == InputManager.States.MovingPiece && Input.GetKeyDown(KeyCode.Space))
         {
             Debug.Log("Space pressed");
             
