@@ -25,7 +25,7 @@ public class InputManager : MonoBehaviour
         Left,
         Right
     }
-    /*public enum InputTypes
+    public enum InputTypes
     {
         Up,
         Down,
@@ -37,16 +37,13 @@ public class InputManager : MonoBehaviour
         NewPiece,
         Cancel,
         Confirm
-    }*/
+    }
 
-    /*[FormerlySerializedAs("UIInputs")] [Header("Input settings")] public SerializableDictionary<InputTypes, KeyCode> _UIInputs;
-    public static SerializableDictionary<InputTypes, KeyCode> UIInputs;*/
+    [FormerlySerializedAs("UIInputs")] [Header("Input settings")] public SerializableDictionary<InputTypes, KeyCode> _UIInputs;
+    public static SerializableDictionary<InputTypes, KeyCode> UIInputs;
 
     [Header("Settings")]
-    public GameObject UICanvas;
-    [Range(0.0f, 2.0f)] public float canvasFadeTime;
-    [Range(0.0f, 0.1f)] public float canvasFadeAmount;
-    [Range(0.0f, 0.5f)] public float canvasFadeDelay;
+    [SerializeField] private GameObject UICanvas;
     [SerializeField] private MapPieceMover mpm;
     [SerializeField] private CameraController cc;
     public States currentState;
@@ -65,67 +62,39 @@ public class InputManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        /*UIInputs = _UIInputs;*/
+        UIInputs = _UIInputs;
         
         UICanvas = GameObject.Find("Canvas");
         mpm = GameObject.Find("SelectionBorder").GetComponent<MapPieceMover>();
-        cc = GameObject.Find("Camera").GetComponent<CameraController>();
+        cc = GameObject.Find("GameManager").GetComponent<CameraController>();
         
         UICanvas.SetActive(false);
-
-        canvasFadeTime = (cc.speed) - canvasFadeDelay;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetButtonDown("Inventory"))
+        if (Input.GetKeyDown(UIInputs.GetValue(InputTypes.OpenUI)))
         {
             if (UICanvas.activeInHierarchy) //If UI is ON:
             {
                 //DISABLE UI
+                UICanvas.SetActive(false);
+                SetState(States.InWorld);
                 
-                Debug.Log("Starting zoom-in coroutine:");
-
-                StartCoroutine(cc.ZoomIn());
-
+                //cc.SwitchCamera(CameraController.CameraTypes.PlayerCamera);
             }
             else if (!UICanvas.activeInHierarchy) //If UI is OFF:
             {
                 //ENABLE UI
+                UICanvas.SetActive(true);
+                SetState(States.InInventory);
                 
-                Debug.Log("Starting zoom-out coroutine:");
-                
-                StartCoroutine(cc.ZoomOut());
+                //cc.SwitchCamera(CameraController.CameraTypes.UICamera);
             }
         }
 
         //GetInputState();
-    }
-
-    public IEnumerator FadeUIInOut(bool transparent)
-    {
-        CanvasGroup cg = UICanvas.GetComponent<CanvasGroup>();
-
-        yield return new WaitForSeconds(canvasFadeDelay);
-
-        if (transparent) //Fade to transparent
-        {
-            
-        }
-        else if(!transparent) //Fade to visible
-        {
-            UICanvas.SetActive(true);
-            cg.alpha = 0.0f;
-
-            while (cg.alpha != 1.0f)
-            {
-                cg.alpha = cg.alpha + canvasFadeAmount;
-                yield return new WaitForSeconds(canvasFadeTime / (1 / canvasFadeAmount));
-            }
-        }
-        
-        yield return null;
     }
 
     /*void GetInputState()
