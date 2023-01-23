@@ -1296,9 +1296,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   colorFull: {r: 0, g: 0, b: 0, a: 0}
   transparency: 0.35
-  switch_A_pickup: 1
+  switch_A_pickup: 0
   switch_A_putdown: 1
-  switch_LR: 1
+  switch_LR: 0
   switch_B: 1
   switch_Y: 1
   switch_X: 1
