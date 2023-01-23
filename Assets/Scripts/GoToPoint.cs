@@ -1,5 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
+using UnityEditor.Tilemaps;
 using UnityEngine;
 using static UnityEngine.GraphicsBuffer;
 
@@ -9,6 +11,8 @@ public class GoToPoint : MonoBehaviour
     private Transform[] points;
     private int targetIndex = 0;
     public float speed = 1f;
+    public GameObject Snotaap;
+    
     
     
     //stap 1 geef de waypoints holder mee als refernce
@@ -22,6 +26,8 @@ public class GoToPoint : MonoBehaviour
 
     private void Awake()
     {
+        
+
         points = new Transform[waypointsHolder.transform.childCount];
         for (int i = 0; i < points.Length; i++)
         {
@@ -46,10 +52,56 @@ public class GoToPoint : MonoBehaviour
             
             targetIndex = (targetIndex + 1) % points.Length;
         }
-        
+
+
+
+
+        /*Vector3 target = new Vector3((float)-7.22, (float)1.09,(float)8.07);
+
+        Vector3 currenPosition = transform.position;
+        Quaternion currentRotation = transform.rotation;
+
+        //Check for plusX dir
+        if (target.x > currentPosition.x)
+        {
+            //Walking right
+
+            transform.rotation = new Quaternion(-60, transform.rotation.y, transform.rotation.z, 0);
+            iTween.RotateTo(gameObject, iTween.Hash("rotation", new Vector3(currentRotation.x, 90, currentRotation.z), "time", 0.25f));
+        }
+        else
+        {
+            //Walking left
+
+            transform.rotation = new Quaternion(60, currentRotation.y, currentRotation.z, 0);
+            iTween.RotateTo(gameObject, iTween.Hash("rotation", new Vector3(currentRotation.x, 0, currentRotation.z), "time", 0.25f));
+
+        }*/
+
+         
+      
 
 
     }
 
-   
+    //private void OnTriggerEnter(Collider other)
+    //{
+    //    flip();
+    //    //Debug.Log("hij collide");
+    //    //if (other.gameObject.tag == ("kind"))
+    //    //{
+    //    //    Snotaap.transform.localScale = new Vector3(0, -0, 0);
+
+    //    //    Debug.Log("hij collide");
+    //    //}
+    //}
+
+    //void flip()
+    //{
+    //    Vector3 Currentscale = gameObject.transform.localscale;
+    //    Currentscale.x *= -1;
+    //    gameObject.transform.localScale = Currentscale;
+    //    facingRight = !facingRight
+    //}
+
 }
