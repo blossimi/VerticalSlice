@@ -13,6 +13,7 @@ public class Movement : MonoBehaviour
     private void Start()
     {
         rb = gameObject.GetComponent<Rigidbody2D>();
+        
     }
 
     void Update()
