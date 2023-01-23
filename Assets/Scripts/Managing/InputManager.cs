@@ -104,8 +104,9 @@ public class InputManager : MonoBehaviour
 
         if (Input.GetKeyDown(reset))
         {
-            SceneManager.LoadScene("Main");
+            SceneManager.LoadScene("Start");
         }
+        
     }
 
     public IEnumerator FadeUIInOut(bool transparent)
