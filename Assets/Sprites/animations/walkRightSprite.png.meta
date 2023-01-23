@@ -3,7 +3,7 @@ guid: fbb1abe125b5cd0438a84e7edb355eaf
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
-  serializedVersion: 11
+  serializedVersion: 12
   mipmaps:
     mipMapMode: 0
     enableMipMap: 0
@@ -63,6 +63,7 @@ TextureImporter:
   textureFormatSet: 0
   ignorePngGamma: 0
   applyGammaDecoding: 0
+  cookieLightType: 1
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
@@ -107,12 +108,12 @@ TextureImporter:
       name: walkRightSprite_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 690
-        height: 690
+        x: 268
+        y: 63
+        width: 263
+        height: 523
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -128,12 +129,12 @@ TextureImporter:
       name: walkRightSprite_1
       rect:
         serializedVersion: 2
-        x: 690
-        y: 0
-        width: 690
-        height: 690
+        x: 958
+        y: 63
+        width: 263
+        height: 523
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -149,12 +150,12 @@ TextureImporter:
       name: walkRightSprite_2
       rect:
         serializedVersion: 2
-        x: 1380
-        y: 0
-        width: 690
-        height: 690
+        x: 1646
+        y: 80
+        width: 269
+        height: 506
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -170,12 +171,12 @@ TextureImporter:
       name: walkRightSprite_3
       rect:
         serializedVersion: 2
-        x: 2070
-        y: 0
-        width: 690
-        height: 690
+        x: 2336
+        y: 80
+        width: 269
+        height: 506
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -191,12 +192,12 @@ TextureImporter:
       name: walkRightSprite_4
       rect:
         serializedVersion: 2
-        x: 2760
-        y: 0
-        width: 690
-        height: 690
+        x: 3028
+        y: 66
+        width: 264
+        height: 520
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -212,12 +213,12 @@ TextureImporter:
       name: walkRightSprite_5
       rect:
         serializedVersion: 2
-        x: 3450
-        y: 0
-        width: 690
-        height: 690
+        x: 3718
+        y: 66
+        width: 264
+        height: 520
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -233,12 +234,12 @@ TextureImporter:
       name: walkRightSprite_6
       rect:
         serializedVersion: 2
-        x: 4140
-        y: 0
-        width: 690
-        height: 690
+        x: 4389
+        y: 66
+        width: 286
+        height: 509
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -254,12 +255,12 @@ TextureImporter:
       name: walkRightSprite_7
       rect:
         serializedVersion: 2
-        x: 4830
-        y: 0
-        width: 690
-        height: 690
+        x: 5079
+        y: 66
+        width: 286
+        height: 509
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
