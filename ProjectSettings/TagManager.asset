@@ -8,6 +8,9 @@ TagManager:
   - BorderCollider
   - LoadedTile
   - UITile
+  - Go-Right
+  - Go-Left
+  - kind
   layers:
   - Default
   - TransparentFX
