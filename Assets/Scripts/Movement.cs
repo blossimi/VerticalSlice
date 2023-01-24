@@ -37,7 +37,7 @@ public class Movement : MonoBehaviour
                 transform.position += new Vector3(-movementSpeed, 0, 0) * Time.deltaTime;
                 anim.SetBool("MoveLeft", true);
                 
-                spriteParent.transform.localPosition = new Vector3(spriteParent.transform.localPosition.x, 0.1f, spriteParent.transform.localPosition.z);
+                
             }
             else
             {
