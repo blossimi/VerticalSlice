@@ -12,8 +12,10 @@ public class Movement : MonoBehaviour
     public float movementSpeed;
     public bool movementLocked;
     public ExController controls;
+    
     private Animator anim;
-    private float offset = 0.1f;
+    private GameObject spriteParent;
+    
     private void Awake()
     {
         controls = new ExController();
@@ -23,6 +25,7 @@ public class Movement : MonoBehaviour
         playerSprite = GameObject.Find("player");
         rb = gameObject.GetComponent<Rigidbody2D>();
         anim = playerSprite.GetComponent<Animator>();
+        spriteParent = transform.Find("spriteparent").gameObject;
     }
 
     void Update()
@@ -33,11 +36,11 @@ public class Movement : MonoBehaviour
 
                 transform.position += new Vector3(-movementSpeed, 0, 0) * Time.deltaTime;
                 anim.SetBool("MoveLeft", true);
-                playerSprite.transform.position = new Vector3(transform.position.x, 1.2f, transform.position.z);
+                
+                spriteParent.transform.localPosition = new Vector3(spriteParent.transform.localPosition.x, 0.1f, spriteParent.transform.localPosition.z);
             }
             else
             {
-                playerSprite.transform.position = new Vector3(transform.position.x, 1.1f, transform.position.z);
                 anim.SetBool("MoveLeft", false);
             }
 
@@ -46,11 +49,9 @@ public class Movement : MonoBehaviour
 
                 transform.position += new Vector3(movementSpeed, 0, 0) * Time.deltaTime;
                 anim.SetBool("MoveRight", true);
-                playerSprite.transform.position = new Vector3(transform.position.x, 1.2f, transform.position.z);
             }
             else
             {
-                playerSprite.transform.position = new Vector3(transform.position.x, 1.1f, transform.position.z);
                 anim.SetBool("MoveRight", false);
             }
 
@@ -59,11 +60,9 @@ public class Movement : MonoBehaviour
 
                 transform.position += new Vector3(0, 0, movementSpeed) * Time.deltaTime;
                 anim.SetBool("MoveUp", true);
-                playerSprite.transform.position = new Vector3(transform.position.x, 1.2f, transform.position.z);
             }
             else
             {
-                playerSprite.transform.position = new Vector3(transform.position.x, 1.1f, transform.position.z);
                 anim.SetBool("MoveUp", false);
             }
 
@@ -72,12 +71,11 @@ public class Movement : MonoBehaviour
 
                 transform.position += new Vector3(0, 0, -movementSpeed) * Time.deltaTime;
                 anim.SetBool("MoveDown", true);
-                playerSprite.transform.position = new Vector3(transform.position.x, 1.2f, transform.position.z);
             }
             else
             {
-                playerSprite.transform.position = new Vector3(transform.position.x, 1.1f, transform.position.z);
                 anim.SetBool("MoveDown", false);
+
             }
         }
     }

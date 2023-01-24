@@ -181,7 +181,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Player: {fileID: 5280229039567577503}
-  movementSpeed: 3
+  movementSpeed: 2
   movementLocked: 0
 --- !u!1 &9018274947217284867
 GameObject:
