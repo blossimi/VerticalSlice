@@ -3,7 +3,7 @@ guid: 91ffdc90f12f04a4f94ac83a7b156579
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
-  serializedVersion: 11
+  serializedVersion: 12
   mipmaps:
     mipMapMode: 0
     enableMipMap: 0
@@ -63,6 +63,7 @@ TextureImporter:
   textureFormatSet: 0
   ignorePngGamma: 0
   applyGammaDecoding: 0
+  cookieLightType: 1
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
@@ -107,12 +108,12 @@ TextureImporter:
       name: walkBackSprite_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 690
-        height: 690
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 192
+        y: 75
+        width: 271
+        height: 518
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -128,12 +129,12 @@ TextureImporter:
       name: walkBackSprite_1
       rect:
         serializedVersion: 2
-        x: 690
-        y: 0
-        width: 690
-        height: 690
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 883
+        y: 75
+        width: 271
+        height: 519
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -149,12 +150,12 @@ TextureImporter:
       name: walkBackSprite_2
       rect:
         serializedVersion: 2
-        x: 1380
-        y: 0
-        width: 690
-        height: 690
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 1575
+        y: 75
+        width: 270
+        height: 519
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -170,12 +171,12 @@ TextureImporter:
       name: walkBackSprite_3
       rect:
         serializedVersion: 2
-        x: 2070
-        y: 0
-        width: 690
-        height: 690
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 2274
+        y: 79
+        width: 271
+        height: 492
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -191,12 +192,12 @@ TextureImporter:
       name: walkBackSprite_4
       rect:
         serializedVersion: 2
-        x: 2760
-        y: 0
-        width: 690
-        height: 690
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 2962
+        y: 79
+        width: 274
+        height: 492
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -212,12 +213,12 @@ TextureImporter:
       name: walkBackSprite_5
       rect:
         serializedVersion: 2
-        x: 3450
-        y: 0
-        width: 690
-        height: 690
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 3653
+        y: 79
+        width: 274
+        height: 492
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -233,12 +234,12 @@ TextureImporter:
       name: walkBackSprite_6
       rect:
         serializedVersion: 2
-        x: 4140
-        y: 0
-        width: 690
-        height: 690
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 4336
+        y: 79
+        width: 271
+        height: 520
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -254,12 +255,12 @@ TextureImporter:
       name: walkBackSprite_7
       rect:
         serializedVersion: 2
-        x: 4830
-        y: 0
-        width: 690
-        height: 690
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 5027
+        y: 79
+        width: 271
+        height: 520
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -275,12 +276,12 @@ TextureImporter:
       name: walkBackSprite_8
       rect:
         serializedVersion: 2
-        x: 5520
-        y: 0
-        width: 690
-        height: 690
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 5715
+        y: 79
+        width: 271
+        height: 520
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -296,12 +297,12 @@ TextureImporter:
       name: walkBackSprite_9
       rect:
         serializedVersion: 2
-        x: 6210
-        y: 0
-        width: 690
-        height: 690
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 6402
+        y: 79
+        width: 275
+        height: 522
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -317,12 +318,12 @@ TextureImporter:
       name: walkBackSprite_10
       rect:
         serializedVersion: 2
-        x: 6900
-        y: 0
-        width: 690
-        height: 690
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 7093
+        y: 79
+        width: 275
+        height: 522
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -338,12 +339,12 @@ TextureImporter:
       name: walkBackSprite_11
       rect:
         serializedVersion: 2
-        x: 7590
-        y: 0
-        width: 690
-        height: 690
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 7785
+        y: 79
+        width: 274
+        height: 522
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
