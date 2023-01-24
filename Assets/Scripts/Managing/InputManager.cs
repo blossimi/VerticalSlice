@@ -6,6 +6,7 @@ using NativeSerializableDictionary;
 using Newtonsoft.Json;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.Serialization;
 using UnityEngine.UI;
 
@@ -50,6 +51,7 @@ public class InputManager : MonoBehaviour
     [SerializeField] private MapPieceMover mpm;
     [SerializeField] private CameraController cc;
     public States currentState;
+    public KeyCode reset;
     
 
     
@@ -100,7 +102,11 @@ public class InputManager : MonoBehaviour
             }
         }
 
-        //GetInputState();
+        if (Input.GetKeyDown(reset))
+        {
+            SceneManager.LoadScene("Start");
+        }
+        
     }
 
     public IEnumerator FadeUIInOut(bool transparent)

@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 510f1e1769574494a907f656e0f92fa2
+guid: ad36c8db2c5068c4f9def15507b3371b
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -105,13 +105,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: emptybar
+      name: kutkind
       rect:
         serializedVersion: 2
-        x: 97
-        y: 392
-        width: 1742
-        height: 305
+        x: 283
+        y: 265
+        width: 448
+        height: 583
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -119,8 +119,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: cf2ec5f54988ee0459e97a3e87a4051a
-      internalID: 1275383793
+      spriteID: bc32c9d29fd005a459c9140711801ef6
+      internalID: -547941954
       vertices: []
       indices: 
       edges: []
@@ -136,7 +136,7 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      emptybar: 1275383793
+      kutkind: -547941954
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
