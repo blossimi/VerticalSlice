@@ -99,7 +99,7 @@ public class CameraController : MonoBehaviour
         zoomInPath[3] = inPos;
         
         //Disable UI
-        im.UICanvas.SetActive(false);
+        im.FadeUIInOut(true);
 
         //MoveTo
         iTween.MoveTo(gameObject, iTween.Hash("position", zoomInPath[3], "time", speed, "path", zoomInPath, "easetype", iTween.EaseType.linear));

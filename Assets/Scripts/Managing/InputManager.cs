@@ -72,8 +72,8 @@ public class InputManager : MonoBehaviour
         UICanvas = GameObject.Find("Canvas");
         mpm = GameObject.Find("SelectionBorder").GetComponent<MapPieceMover>();
         cc = GameObject.Find("Camera").GetComponent<CameraController>();
-        
-        UICanvas.SetActive(false);
+
+        FadeUIInOut(true);
 
         canvasFadeTime = (cc.speed) - canvasFadeDelay;
     }
@@ -117,7 +117,15 @@ public class InputManager : MonoBehaviour
 
         if (transparent) //Fade to transparent
         {
+            cg.alpha = 1.0f;
+
+            while (cg.alpha != 0.0f)
+            {
+                cg.alpha = cg.alpha - canvasFadeAmount;
+                yield return new WaitForSeconds(canvasFadeTime / (1 / canvasFadeAmount));
+            }
             
+            UICanvas.SetActive(false);
         }
         else if(!transparent) //Fade to visible
         {
