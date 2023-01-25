@@ -81,16 +81,22 @@ public class UITileController : MonoBehaviour
         //If there is a in-world chunk with the same chunk coords:
         if(inWorldChunk.transform.childCount > 0)
         {
-            Sprite tileImage = inWorldChunk.gameObject.transform.GetChild(0).GetComponent<TerrainObject>().uiTileImage;
+            Sprite tileImage = 
+                inWorldChunk.gameObject.transform.GetChild(0)
+                    .GetComponent<TerrainObject>().uiTileImage;
 
-            gameObject.GetComponent<Image>().sprite = tileImage; //Set the correct uitile image
-            gameObject.GetComponent<Image>().color = visibleSprite; //Make the tile image no longer transparent
+            //Set the correct uitile image
+            gameObject.GetComponent<Image>().sprite = tileImage; 
+            //Make the tile image no longer transparent
+            gameObject.GetComponent<Image>().color = visibleSprite; 
         }
         //If there is NOT an in-world chunk with the same chunk coords:
         else
         {
-            gameObject.GetComponent<Image>().sprite = null; //Set the correct empty image
-            gameObject.GetComponent<Image>().color = transparentSprite; //Make the tile image transparent
+            //Set the correct empty image
+            gameObject.GetComponent<Image>().sprite = null; 
+            //Make the tile image transparent
+            gameObject.GetComponent<Image>().color = transparentSprite; 
         }
         
     }

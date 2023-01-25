@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using Unity.PlasticSCM.Editor.WebApi;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Serialization;
@@ -24,6 +23,7 @@ public class MapPieceMover : MonoBehaviour
     public Sprite borderFull;
     public Sprite borderCorners;
     public GameObject grid;
+    public GameObject redOverlay;
     
     //Private variables
     private InputManager im;
@@ -42,7 +42,7 @@ public class MapPieceMover : MonoBehaviour
         uiTiles = GameObject.FindGameObjectsWithTag("UITile");
         cg = GameObject.Find("GameManager").GetComponent<ChunkGenerator>();
         
-        
+        redOverlay.GetComponent<Image>().color = new Color(255, 0, 0, 0);
     }
 
     // Update is called once per frame
@@ -93,6 +93,27 @@ public class MapPieceMover : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.RightArrow) && currentChunk != null)
         { //Right
             MoveBorder(1, 0);
+        }
+
+        if (im.currentState == InputManager.States.MovingPiece)
+        {
+            
+            if (currentChunk != null)
+            {
+                if (currentChunk.gameObject.GetComponent<Image>().sprite != null)
+                {
+                    redOverlay.GetComponent<Image>().color = new Color(255, 0, 0, 50);
+                }
+                else
+                {
+                    redOverlay.GetComponent<Image>().color = new Color(255, 0, 0, 0);
+                }  
+            }
+            
+        }
+        else
+        {
+            redOverlay.GetComponent<Image>().color = new Color(255, 0, 0, 0);
         }
 
         //
@@ -151,6 +172,8 @@ public class MapPieceMover : MonoBehaviour
             
             //Set state to InInventory again
             im.SetState(InputManager.States.InInventory);
+            
+            
         }
         
     }
