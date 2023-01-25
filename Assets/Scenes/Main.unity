@@ -1152,6 +1152,7 @@ MonoBehaviour:
   cc: {fileID: 0}
   currentState: 0
   reset: 114
+  cg: {fileID: 1461208343}
 --- !u!1001 &771411469
 PrefabInstance:
   m_ObjectHideFlags: 0

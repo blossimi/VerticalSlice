@@ -52,8 +52,8 @@ public class InputManager : MonoBehaviour
     [SerializeField] private CameraController cc;
     public States currentState;
     public KeyCode reset;
-    
 
+    public CanvasGroup cg;
     
 
     [SerializeField]
@@ -72,8 +72,9 @@ public class InputManager : MonoBehaviour
         UICanvas = GameObject.Find("Canvas");
         mpm = GameObject.Find("SelectionBorder").GetComponent<MapPieceMover>();
         cc = GameObject.Find("Camera").GetComponent<CameraController>();
+        //cg = UICanvas.GetComponent<CanvasGroup>();
 
-        StartCoroutine(FadeUIInOut(true));
+        UICanvas.SetActive(false);
 
         canvasFadeTime = (cc.speed) - canvasFadeDelay;
     }
@@ -111,13 +112,13 @@ public class InputManager : MonoBehaviour
 
     public IEnumerator FadeUIInOut(bool transparent)
     {
-        CanvasGroup cg = UICanvas.GetComponent<CanvasGroup>();
+        
 
         yield return new WaitForSeconds(canvasFadeDelay);
 
         if (transparent) //Fade to transparent
         {
-            
+            //cg = UICanvas.GetComponent<CanvasGroup>();
             cg.alpha = 1.0f;
 
             while (cg.alpha != 0.0f)
@@ -131,6 +132,7 @@ public class InputManager : MonoBehaviour
         else if(!transparent) //Fade to visible
         {
             UICanvas.SetActive(true);
+            //cg = UICanvas.GetComponent<CanvasGroup>();
             cg.alpha = 0.0f;
 
             while (cg.alpha != 1.0f)

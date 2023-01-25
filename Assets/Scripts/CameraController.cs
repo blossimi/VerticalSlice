@@ -31,14 +31,14 @@ public class CameraController : MonoBehaviour
     private void Update()
     {
 
-        if (Input.GetKeyDown(KeyCode.F))
+        /*if (Input.GetKeyDown(KeyCode.F))
         {
             //im.UICanvas.GetComponent<CanvasGroup>().alpha = 0.5f;
         }
         if (Input.GetKeyDown(KeyCode.G))
         {
             //ZoomIn();
-        }
+        }*/
     }
 
     public IEnumerator ZoomOut()
