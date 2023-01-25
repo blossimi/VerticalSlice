@@ -25,7 +25,6 @@ public class Movement : MonoBehaviour
         playerSprite = GameObject.Find("player");
         rb = gameObject.GetComponent<Rigidbody2D>();
         anim = playerSprite.GetComponent<Animator>();
-        spriteParent = transform.Find("spriteparent").gameObject;
     }
 
     void Update()

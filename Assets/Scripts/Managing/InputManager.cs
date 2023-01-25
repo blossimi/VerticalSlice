@@ -73,7 +73,7 @@ public class InputManager : MonoBehaviour
         mpm = GameObject.Find("SelectionBorder").GetComponent<MapPieceMover>();
         cc = GameObject.Find("Camera").GetComponent<CameraController>();
 
-        FadeUIInOut(true);
+        StartCoroutine(FadeUIInOut(true));
 
         canvasFadeTime = (cc.speed) - canvasFadeDelay;
     }
@@ -117,6 +117,7 @@ public class InputManager : MonoBehaviour
 
         if (transparent) //Fade to transparent
         {
+            
             cg.alpha = 1.0f;
 
             while (cg.alpha != 0.0f)
