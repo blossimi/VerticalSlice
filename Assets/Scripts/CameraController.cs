@@ -31,14 +31,14 @@ public class CameraController : MonoBehaviour
     private void Update()
     {
 
-        if (Input.GetKeyDown(KeyCode.F))
+        /*if (Input.GetKeyDown(KeyCode.F))
         {
             //im.UICanvas.GetComponent<CanvasGroup>().alpha = 0.5f;
         }
         if (Input.GetKeyDown(KeyCode.G))
         {
             //ZoomIn();
-        }
+        }*/
     }
 
     public IEnumerator ZoomOut()
@@ -99,7 +99,7 @@ public class CameraController : MonoBehaviour
         zoomInPath[3] = inPos;
         
         //Disable UI
-        im.UICanvas.SetActive(false);
+        StartCoroutine(im.FadeUIInOut(true));
 
         //MoveTo
         iTween.MoveTo(gameObject, iTween.Hash("position", zoomInPath[3], "time", speed, "path", zoomInPath, "easetype", iTween.EaseType.linear));

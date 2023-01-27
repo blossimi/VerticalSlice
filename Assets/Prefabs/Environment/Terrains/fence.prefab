@@ -58,7 +58,7 @@ GameObject:
   - component: {fileID: 7094754789411959612}
   - component: {fileID: 2414454481736732010}
   m_Layer: 0
-  m_Name: chopped_trees
+  m_Name: fence
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -120,12 +120,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -1249658951, guid: a33e5be23dbc4dc4e86cb946806cf6a5, type: 3}
+  m_Sprite: {fileID: -943841023, guid: a33e5be23dbc4dc4e86cb946806cf6a5, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 0.54, y: 0.56}
+  m_Size: {x: 0.52, y: 0.54}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
