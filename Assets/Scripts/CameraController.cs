@@ -30,7 +30,8 @@ public class CameraController : MonoBehaviour
 
     private void Update()
     {
-
+        im = GameObject.Find("GameManager").GetComponent<InputManager>();
+        
         /*if (Input.GetKeyDown(KeyCode.F))
         {
             //im.UICanvas.GetComponent<CanvasGroup>().alpha = 0.5f;
